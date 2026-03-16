@@ -54,6 +54,29 @@
             // This rewrites the request in real-time
             document.getElementById('os-frame').src = '/service/' + btoa(url);
         }
-    </script>
+    </function launchCloak() {
+    // 1. Open a new window with no URL (about:blank)
+    const win = window.open();
+    if (!win) {
+        alert("Pop-up blocked! Please allow pop-ups for this site to use Ghost Mode.");
+        return;
+    }
+
+    // 2. Define the styling to make the iframe full-screen
+    const style = "margin:0; height:100vh; width:100vw; border:none; overflow:hidden; display:block;";
+    
+    // 3. Get the URL of your current proxy (the one on GitHub)
+    const url = window.location.href;
+
+    // 4. Inject the proxy into the new "about:blank" window
+    win.document.body.innerHTML = `
+        <title>Google Docs</title>
+        <link rel="icon" type="image/x-icon" href="https://ssl.gstatic.com/docs/doclist/images/infinite_wallpapers/google_docs_logo_2020q4.ico">
+        <iframe src="${url}" style="${style}"></iframe>
+    `;
+
+    // 5. Optional: Redirect the "real" tab to something safe so teachers don't see it
+    window.location.replace("https://classroom.google.com");
+}>
 </body>
 </html>
